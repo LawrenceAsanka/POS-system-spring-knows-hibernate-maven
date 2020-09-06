@@ -13,10 +13,6 @@ import java.util.List;
 public class QueryDAOImpl implements QueryDAO {
 
     private  Session session;
-    @Override
-    public void setSession(Session session) {
-        this.session=session;
-    }
 
     @Override
     public List<CustomEntity> getOrderDetail() throws Exception {

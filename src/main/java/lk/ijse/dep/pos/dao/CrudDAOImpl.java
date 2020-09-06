@@ -17,11 +17,6 @@ public abstract  class CrudDAOImpl<T extends SuperEntity,ID extends Serializable
    entity = (Class<T>) (((ParameterizedType) (this.getClass().getGenericSuperclass())).getActualTypeArguments()[0]);
   }
 
-  @Override
-  public void setSession(Session session) {
-    this.session = session;
-  }
-
 
   @Override
   public List<T> findAll() throws Exception {
