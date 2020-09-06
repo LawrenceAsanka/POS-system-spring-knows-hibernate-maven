@@ -23,4 +23,9 @@ public class QueryDAOImpl implements QueryDAO {
                 "GROUP BY o.id").setResultTransformer(Transformers.aliasToBean(CustomEntity.class)).list();
 
     }
+
+    @Override
+    public Session getSession() {
+        return null;
+    }
 }
