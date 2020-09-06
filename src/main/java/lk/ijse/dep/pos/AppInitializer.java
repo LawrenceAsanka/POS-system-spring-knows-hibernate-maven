@@ -2,7 +2,6 @@ package lk.ijse.dep.pos;
 
 import java.io.IOException;
 
-import lk.ijse.dep.pos.db.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +16,7 @@ public class AppInitializer extends Application {
   public static AnnotationConfigApplicationContext getApplicationContext(){
     return ctx;
   }
+
   public static void main(String[] args) {
     ctx = new AnnotationConfigApplicationContext();
     ctx.registerShutdownHook();
@@ -24,7 +24,6 @@ public class AppInitializer extends Application {
     ctx.refresh();
 
     launch(args);
-    HibernateUtil.getSessionFactory().close();
   }
 
   @Override
