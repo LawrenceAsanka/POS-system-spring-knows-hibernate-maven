@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OrderDAOImpl extends CrudDAOImpl<Order,String> implements OrderDAO {
 
   public String getLastOrderId() throws Exception {
-    List list = session.createQuery("SELECT o.id FROM lk.ijse.dep.pos.entity.Order o ORDER BY id DESC").setMaxResults(1).list();
+    List list = getSession().createQuery("SELECT o.id FROM lk.ijse.dep.pos.entity.Order o ORDER BY id DESC").setMaxResults(1).list();
     return list.size() > 0 ? (String) list.get(0) : null;
   }
 
