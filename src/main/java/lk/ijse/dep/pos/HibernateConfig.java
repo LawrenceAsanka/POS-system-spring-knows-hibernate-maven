@@ -4,7 +4,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -14,12 +16,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+@PropertySource("classpath:application.properties")
 @Configuration
 @EnableTransactionManagement
 public class HibernateConfig {
 
     @Autowired
     private Environment env;
+
+    @Bean
+    public static PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory(DataSource ds){
@@ -45,10 +53,10 @@ public class HibernateConfig {
 
     private Properties hibernateProperties(){
         Properties properties = new Properties();
-        properties.put("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
-        properties.put("hibernate.show_sql",true);
-        properties.put("hibernate.hbm2ddl.auto","update");
-        properties.put("hibernate.allow_refresh_detached_entity",false);
+        properties.put("hibernate.dialect",env.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql",env.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto",env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.allow_refresh_detached_entity",env.getRequiredProperty("hibernate.allow_refresh_detached_entity"));
         return properties;
     }
 

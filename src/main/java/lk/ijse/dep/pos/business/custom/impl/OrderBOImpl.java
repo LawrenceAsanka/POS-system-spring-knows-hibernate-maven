@@ -10,6 +10,7 @@ import lk.ijse.dep.pos.util.OrderDetailTM;
 import lk.ijse.dep.pos.util.OrderTM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 @Transactional
 public class OrderBOImpl implements OrderBO { // , Temp
     @Autowired

@@ -6,12 +6,13 @@ import lk.ijse.dep.pos.entity.Customer;
 import lk.ijse.dep.pos.util.CustomerTM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 @Transactional
 public class CustomerBOImpl implements CustomerBO {
 
