@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 @Transactional
 public class OrderBOImpl implements OrderBO { // , Temp
     @Autowired
